@@ -1,22 +1,75 @@
-/*body{
-	background-image: url(../imagenes/flechas.jpg);
-}*/
+body{
+	background-image: url(../imagenes/fondo1.jfif);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position:fixed;
+	width:50%;
+	height:50%;
+	left:19%;/* del lado izquierdo al derecho*/
+	top: -6%;
+	text-align: center;
+}
+
+h1{
+	font-size: 50px;
+	-webkit-text-fill-color: #F9E79F;/*color de relleno de la letra*/
+	-webkit-text-stroke: 1px #803444;/*color de borde de la letra*/
+}
+
+h2{
+	font: oblique bold 200% cursive;
+	-webkit-text-stroke: 1px #E0D7D9;
+	position: relative;/*position y top funcionan juntos y es para mover las letras*/
+  	top: -1em;
+  	color: #960e75;
+}
+
 .negro{
   background-color: black;
+
+}
+.amarillo{
+	background-color: yellow;
 }
 
 td{
   width: 40px;
   height: 40px;
+  position: relative;/*position funciona con top mas ambos*/
+  top: -3.5em;
 }
+
 .imgInicio{
-	background-image: url(../imagenes/flechas.png);
-	background-size: contain;
+	background-image: url(../imagenes/inicio.png);
+	background-size: contain;/*iso que aparesca la imagen*/
+	/*transform: rotateZ(-90deg); para que la imagen rote*/
 	background-repeat: no-repeat;
-	position: absolute; 	
+	/*background-color: #BE61B6;	*/
 }
+
 .imgFinal{
 	background-image: url(../imagenes/final.png);
 	background-size: contain;
+	background-color: #61BEB3;
+	background-repeat: no-repeat;
+}
 
+#derecha{
+	position: relative;/*position funciona con top mas ambos*/
+  	top: -3.8em;
+}
+
+#izquierda{
+	position: relative;/*position funciona con top mas ambos*/
+  	top: -3.8em;
+}
+
+#adelante{
+	position: relative;/*position funciona con top mas ambos*/
+  	top: -3.8em;
+}
+
+#salida{
+	position: relative;/*position funciona con top mas ambos*/
+  	top: -3.8em;
 }
