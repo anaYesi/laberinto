@@ -62,9 +62,9 @@ var btnAdelante = document.getElementById('adelante');
 btnAdelante.onclick=function(){
 
      if (Amapa[y-1][x] == '_') {
-        Amapa[y][x]='_';
+        
+
         y=y-1;
-        Amapa[y][x]='o';
         CrearMapa(Amapa);
     }
 }
@@ -72,9 +72,8 @@ btnAdelante.onclick=function(){
 var btnDerecha = document.getElementById('derecha');
 btnDerecha.onclick = function(){
     if (Amapa[y][x+1] == '_') {
-        Amapa[y][x]='_';
+        
         x=x+1;
-        Amapa[y][x]='o';
         CrearMapa(Amapa);
     }
 }
@@ -82,9 +81,7 @@ btnDerecha.onclick = function(){
 var btnIzquierda = document.getElementById('izquierda');
 btnIzquierda.onclick = function(){
     if (Amapa[y][x-1] =='_') {
-        Amapa[y][x]='_';
         x=x-1;
-        Amapa[y][x]='o';
         CrearMapa(Amapa);
     }
 }
