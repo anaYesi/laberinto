@@ -11,84 +11,96 @@ var mapa=[
 "*o*__*________**W*",
 "******************"];
 var x, y;
-var celdas =new Array(mapa.length);
+var Amapa = [];
+for (var i = 0; i < mapa.length; i++){
+    Amapa[i]=[];
+    for (var j = 0; j < mapa[0].length; j++){
+        Amapa[i][j]=mapa[i][j];
+    }
+}
 
 var tablero = document.getElementById('tablero');
-function CrearMapa(mapa){
+function CrearMapa(Amapa){
     tablero.innerHTML = '';
     var tabla = document.createElement('table');//creando una tabla
     //tabla.border = "1";
     tabla.setAttribute("cellspacing","0")//une los bloques, los cuadraditos
-    var d=0;
-    for (var i = 0; i < mapa.length; i++) {
+    for (var i = 0; i < Amapa.length; i++) {
         var fila = document.createElement("tr");
-        var f=[];
-        for (var j = 0; j < mapa[0].length; j++) {
+        for (var j = 0; j < Amapa[0].length; j++) {
             var celda = document.createElement("td");
-
-            //celda.id ;
-
-            if (mapa[i][j] == "*") {
+            if (Amapa[i][j] == "*") {
                 celda.setAttribute("class", "negro");
             }
-            else if (mapa[i][j] == "_") {
+            else if (Amapa[i][j] == "_") {
                 celda.setAttribute("class", "amarillo");
-                //celda.class = "amarillo"
             }
-            else if (mapa[i][j] == "o") {
-                //agrega u hijo a un padre en este caso es la celda
-                var img = document.createElement("img");
-                img.src = "assets/imagenes/inicio.png";//extencion de la imagen
-
-                celda.setAttribute("class", "imgInicio");
-                celda.style.backgroundColor = "#BE61B6";
-                celda.appendChild(img);//poniendo un hijo a la celda
-
+            else if (Amapa[i][j] == "o") {
                 x = j;//para que se mueva o en el eje x
                 y = i;
-                console.log("x "+x);
-                console.log("y "+y);
-                //console.log("amapan "+mapa[i][j]);
-
+                celda.setAttribute("class", "imgInicio");
+                celda.style.backgroundColor = "#BE61B6";
             }
-            else if (mapa[i][j] == "W") {
+            else if (Amapa[i][j] == "W") {
                 celda.setAttribute("class", "imgFinal");
             }
                 
             fila.appendChild(celda);
-            f.push(celda);
         }
         tabla.appendChild(fila);
-        celdas[i]=f;
     }
     tablero.appendChild(tabla);
-    //console.log(celdas[1][1])
 }
-CrearMapa(mapa);
+CrearMapa(Amapa);
 
 var btnAdelante = document.getElementById('adelante');
 btnAdelante.onclick=function(){
-     if (mapa[x-1][y] == '_') {
-
+    if (Amapa[y-1][x]!='*') {
+        Amapa[y][x]='_';
+        y-=1;
+        Amapa[y][x]='o';
+        CrearMapa(Amapa);
+        
 
     }
 }
 
 var btnDerecha = document.getElementById('derecha');
 btnDerecha.onclick = function(){
-
-    if (mapa[y][x+1] == '_') {
-        x=x+1;
-        CrearMapa(mapa);
-        
+    if (Amapa[y][x+1]!='*') {
+        Amapa[y][x]='_';
+        x+=1;
+        Amapa[y][x]='o';
+        CrearMapa(Amapa);
     }
 }
 
 var btnIzquierda = document.getElementById('izquierda');
 btnIzquierda.onclick = function(){
-    if (Amapa[y][x-1] =='_') {
-        x=x-1;
+    if (Amapa[y][x-1]!='*') {
+        Amapa[y][x]='_';
+        x-=1;
+        Amapa[y][x]='o';
         CrearMapa(Amapa);
     }
 }
 
+var btnSalida = document.getElementById('salida');
+btnSalida.onclick = function(){
+    if (Amapa[y+1][x]!='*') {
+        Amapa[y][x]='_';
+        y+=1;
+        Amapa[y][x]='o';
+        CrearMapa(Amapa);
+    }
+
+}
+var btnAbajo = document.getElementById('abajo');
+btnAbajo.onclick = function(){
+    if (Amapa[y+1][x]!='*') {
+        Amapa[y][x]='_';
+        y+=1;
+        Amapa[y][x]='o';
+        generarMapa(Amapa);
+  }
+}
