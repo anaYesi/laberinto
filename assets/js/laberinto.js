@@ -16,6 +16,7 @@ for (var i = 0; i < mapa.length; i++){
     Amapa[i]=[];
     for (var j = 0; j < mapa[0].length; j++){
         Amapa[i][j]=mapa[i][j];
+        console.log("amapa"+Amapa[i][j]);
     }
 }
 
@@ -36,10 +37,14 @@ function CrearMapa(Amapa){
                 celda.setAttribute("class", "amarillo");
             }
             else if (Amapa[i][j] == "o") {
-                x = j;//para que se mueva o en el eje x
-                y = i;
                 celda.setAttribute("class", "imgInicio");
                 celda.style.backgroundColor = "#BE61B6";
+                x = j;//para que se mueva o en el eje x
+                y = i;
+                console.log("x"+x);
+                console.log("y"+y);
+                //console.log("amapan "+Amapa[i][j]);
+
             }
             else if (Amapa[i][j] == "W") {
                 celda.setAttribute("class", "imgFinal");
@@ -55,21 +60,20 @@ CrearMapa(Amapa);
 
 var btnAdelante = document.getElementById('adelante');
 btnAdelante.onclick=function(){
-    if (Amapa[y-1][x]!='*') {
+
+     if (Amapa[y-1][x] == '_') {
         Amapa[y][x]='_';
-        y-=1;
+        y=y-1;
         Amapa[y][x]='o';
         CrearMapa(Amapa);
-        
-
     }
 }
 
 var btnDerecha = document.getElementById('derecha');
 btnDerecha.onclick = function(){
-    if (Amapa[y][x+1]!='*') {
+    if (Amapa[y][x+1] == '_') {
         Amapa[y][x]='_';
-        x+=1;
+        x=x+1;
         Amapa[y][x]='o';
         CrearMapa(Amapa);
     }
@@ -77,30 +81,11 @@ btnDerecha.onclick = function(){
 
 var btnIzquierda = document.getElementById('izquierda');
 btnIzquierda.onclick = function(){
-    if (Amapa[y][x-1]!='*') {
+    if (Amapa[y][x-1] =='_') {
         Amapa[y][x]='_';
-        x-=1;
+        x=x-1;
         Amapa[y][x]='o';
         CrearMapa(Amapa);
     }
 }
 
-var btnSalida = document.getElementById('salida');
-btnSalida.onclick = function(){
-    if (Amapa[y+1][x]!='*') {
-        Amapa[y][x]='_';
-        y+=1;
-        Amapa[y][x]='o';
-        CrearMapa(Amapa);
-    }
-
-}
-var btnAbajo = document.getElementById('abajo');
-btnAbajo.onclick = function(){
-    if (Amapa[y+1][x]!='*') {
-        Amapa[y][x]='_';
-        y+=1;
-        Amapa[y][x]='o';
-        generarMapa(Amapa);
-  }
-}
